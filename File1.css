@@ -3,3 +3,24 @@ h2{
 background-color:#1865B6; 
 color:white;
 }
+
+body{
+background-image:url(heaven2.JPG);
+background-repeat:no-repeat;
+background-size:cover;
+}
+
+#today{
+background-color:green;
+color:black;
+}
+.this{
+padding-top:30px;
+padding-buttom:30px;
+padding-right:50px;
+padding-left:50px;
+border:solid yellow;
+background-image:url(sky.JFIF);
+background-repeat:no-repeat;
+background-size:cover;
+}
