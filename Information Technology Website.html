@@ -176,9 +176,9 @@ ul{
     <!-- DESCRIPTION -->
 <div class="box faculty-bg">
 
-    <div class="title">Description of IT Faculty</div>
-
     <div class="faculty-content">
+
+        <h3>Description of IT Faculty</h3>
 
         <p>
 
@@ -214,6 +214,7 @@ ul{
     <!-- CALCULATE MARKS -->
     <div class="box">
         <div class="title">CALCULATE STUDENTS MARKS:</div>
+        
 
         STUDENT-NAMES:<br>
         <input type="text" id="name"><br>
@@ -233,9 +234,9 @@ ul{
         FINAL-EXAM/40:<br>
         <input type="number" id="final"><br><br>
 
-        <button onclick="calculate()">TOTAL</button>
-        <button onclick="calculate()">AVERAGE</button>
-        <button onclick="calculate()">GRADE</button>
+        <button type="button" onclick="calculateTotal()">TOTAL</button>
+        <button type="button" onclick="calculateAverage()">AVERAGE</button>
+        <button type="button" onclick="calculateGrade()">GRADE</button>
 
         <br><br>
 
@@ -280,15 +281,29 @@ ul{
 </div>
 
 <script>
-function calculate(){
 
-    let course = Number(document.getElementById("course").value);
-    let mid = Number(document.getElementById("mid").value);
-    let final = Number(document.getElementById("final").value);
+function getMarks(){
+    let course = Number(document.getElementById("course").value) || 0;
+    let mid = Number(document.getElementById("mid").value) || 0;
+    let final = Number(document.getElementById("final").value) || 0;
 
-    let total = course + mid + final;
+    return course + mid + final;
+}
+
+function calculateTotal(){
+    let total = getMarks();
+    document.getElementById("total").value = total;
+}
+
+function calculateAverage(){
+    let total = getMarks();
     let average = total / 3;
-    let grade;
+    document.getElementById("average").value = average.toFixed(2);
+}
+
+function calculateGrade(){
+    let total = getMarks();
+    let grade = "";
 
     if(total >= 70){
         grade = "A";
@@ -303,10 +318,9 @@ function calculate(){
         grade = "Failed";
     }
 
-    document.getElementById("total").value = total;
-    document.getElementById("average").value = average.toFixed(2);
     document.getElementById("grade").value = grade;
 }
+
 </script>
 
 </body>
